@@ -4,33 +4,17 @@
     {{title}}
   </div>
   <div class="card-body"><br />
-  
-    <input (change)="onChange($event)" (keyup)="onKeyup($event)" class="form-control" type="text" placeholder="Search..." list="searchresults" autofocus/>
-    <datalist id="searchresults">
-      <option *ngFor="let result of searchResults" value="{{result.symbol}}">{{result.name}}</option>
-    </datalist>
 
-    <br />
+    <input class="form-control col-sm-2 tickerInputBox" type="text" placeholder="Ticker Symbol" autofocus/>
+    <button type="button" class="btn btn-primary expirationDatesButton" (click)="showHideExpirations()">Get Expiration Dates</button>
 
-    <div class="form-group row" id="timeframe">
-      <label class="col-sm-6 col-form-label" for="timeframe">Timeframe:</label>
-      <div class="col-sm-6">
-        <select (change)="onTimeChange($event.target.value)" class="form-control form-control-sm" name="timeframe">
-          <option id="{{timeframes[timeframe.id].id}}" value="{{timeframes[timeframe.id].timeframe}}" selected="{{timeframes[timeframe.id].selected}}" *ngFor="let timeframe of timeframes">{{timeframes[timeframe.id].label}}</option>
-        </select>
-      </div>  
-    </div>
+    <br/>
 
-    <br />
+    <select (change)="onTimeChange($event.target.value)" class="form-control col-sm-2 expirationsDropDownBox" name="timeframe" id="expirationsDropDownBox">
+      <option id="{{timeframes[timeframe.id].id}}" value="{{timeframes[timeframe.id].timeframe}}" selected="{{timeframes[timeframe.id].selected}}" *ngFor="let timeframe of timeframes">{{timeframes[timeframe.id].label}}</option>
+    </select>
 
-    <canvas
-      baseChart
-      [chartType]="'bar'"
-      [datasets]="chartData"
-      [options]="chartOptions"
-      [legend]="chartLegend"
-      [labels]="chartLabels">
-    </canvas>
+    <button type="button" id="optionsChainButton" class="btn btn-primary optionsChainButton" (click)="onGetOptionsData()">Get Options Chain</button>
 
   </div>
 </div>

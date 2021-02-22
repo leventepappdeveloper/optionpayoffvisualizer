@@ -1,0 +1,18 @@
+.tickerInputBox {
+    display: inline-block;
+}
+
+.expirationDatesButton {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.expirationsDropDownBox {
+    margin-top: 50px;
+    display: none;
+}
+
+.optionsChainButton {
+    display: none;
+    margin-left: 40px;
+}

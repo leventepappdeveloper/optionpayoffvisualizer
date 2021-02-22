@@ -4,7 +4,8 @@ import { FinanceServiceService } from './services/finance-service.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
@@ -28,6 +29,38 @@ export class AppComponent {
   lineCount: number;
   keyword = '';
   searchResults = [];
+    
+  a = 1;
+  public showHideExpirations() 
+  {
+    if (this.a == 1)
+    {
+      document.getElementById("expirationsDropDownBox").style.display = "inline-block";
+      document.getElementById("optionsChainButton").style.display = "inline-block";
+      return this.a = 0;
+    }
+    else
+    {
+      document.getElementById("expirationsDropDownBox").style.display = "none";
+      document.getElementById("optionsChainButton").style.display = "none";
+      return this.a = 1;
+    }
+  }
+
+  b = 1;
+  public showHideOptionsChain() 
+  {
+    if (this.b == 1)
+    {
+      // options chain should show up
+      return this.b = 0;
+    }
+    else
+    {
+      // options chain should disappear
+      return this.b = 1;
+    }
+  }
 
 
   // GRAPH STUFF
@@ -99,5 +132,12 @@ export class AppComponent {
     this.chartLabels = dates;
     this.chartData[0].data = line;
     this.chartData[1].data = bar;
+  }
+
+  onGetOptionsData() {
+    this.service.getExpirations()
+    .subscribe(data => {
+      console.log(data);
+    });
   }
 }
