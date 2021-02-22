@@ -27,7 +27,7 @@ export class FinanceServiceService {
 
   getExpirations() {
     const httpheaders = new HttpHeaders({
-      'Authorization' : '57VYOz2SIltLtjXNFbEvu4eNDi1b',
+      'Authorization' : 'Bearer 57VYOz2SIltLtjXNFbEvu4eNDi1b',
       'Accept' : 'application/json'
     });
 
